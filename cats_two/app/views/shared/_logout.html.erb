@@ -1,0 +1,21 @@
+<a href="<%= cats_url %>">home</a>
+
+<% if logged_in? %>
+
+    <p> logged in as: <%= current_user.username%></p>
+
+    <form action=" <%= session_url %> " method="post">
+
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="delete">
+        
+        <input type="submit" value="logout">
+    </form>
+
+<% else %>
+
+    <a href="<%= new_user_url %>">sign up</a>
+
+    <a href="<%= new_session_url %>">login</a>
+
+<% end %>
